@@ -1,0 +1,11 @@
+<%= form_with url: discs_path(@disc), method: :post, local: true do |form| %>
+  <p>New Disc:</p>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :plastic %>
+  <%= form.text_field :plastic %>
+  <%= form.label :speed %>
+  <%= form.number_field :speed %>
+
+  <%= form.submit "Submit" %>
+<% end %>

@@ -1,0 +1,10 @@
+
+<h1>Discs</h1>
+<% @discs.each do |disc| %>
+  <h3>Name: <%= disc.name %></h3> <br>
+  <p>Plastic: <%= disc.plastic %></p> <br>
+  <p>Speed: <%= disc.speed %></p> <br>
+  <%= link_to "Update #{disc.name}", edit_disc_path(disc) %><br>
+  <%= link_to "Delete #{disc.name}", disc_path(disc), method: :delete %> <br>
+<% end %>
+<%= link_to "Create Disc", new_disc_path%>

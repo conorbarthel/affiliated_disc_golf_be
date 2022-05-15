@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'root page' do
-  before(:each) do
-    visit "/"
-  end
 
   it 'displays the attributes of all discs' do
     warehouse = Warehouse.create!(name: 'Discs R Us')
@@ -12,6 +9,8 @@ RSpec.describe 'root page' do
     rhyno = Disc.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2)
 
     discs = Disc.all
+    #binding.pry
+    visit root_path
 
     discs.each do |disc|
       expect(page).to have_content(disc.name)
@@ -22,7 +21,15 @@ RSpec.describe 'root page' do
   end
 
   it "has a button to create new discs" do
-
+    visit root_path
+    expect(page).to_not have_content("Undertaker")
+    click_on "Create Disc"
+    expect(current_path).to eq(new_disc_path)
+    fill_in("Name", with:"Undertaker")
+    fill_in("Plastic", with:"ESP")
+    fill_in("Speed", with:9)
+    click_on "Submit"
+    expect(page).to have_content("Undertaker")
   end
 
   it "has a button to update each disc" do
@@ -30,6 +37,7 @@ RSpec.describe 'root page' do
     leopard = Disc.create!(name: 'Leopard', plastic: 'DX', speed: 6)
     rhyno = Disc.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2)
     discs = Disc.all
+    visit root_path
 
     discs.each do |disc|
       expect(page).to have_selector(:link_or_button, "Update #{disc.name}")
@@ -43,10 +51,11 @@ RSpec.describe 'root page' do
     zone = Disc.create!(name: 'Zone', plastic: 'Glow', speed: 4)
     leopard = Disc.create!(name: 'Leopard', plastic: 'DX', speed: 6)
     rhyno = Disc.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2)
-
+    visit root_path
+    
     expect(page).to have_selector(:link_or_button, "Delete #{rhyno.name}")
     expect(page).to have_content(leopard.name)
-    
+
     click_on "Delete #{leopard.name}"
 
     expect(current_path).to eq("/")
