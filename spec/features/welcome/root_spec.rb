@@ -45,12 +45,12 @@ RSpec.describe 'root page' do
     click_on "Update #{zone.name}"
 
     expect(current_path).to eq("/discs/#{zone.id}/edit")
-    fill_in("Name", with:"Zone2")
+    fill_in("Name", with:"Zoone")
     fill_in("Plastic", with:"ESP")
     fill_in("Speed", with:5)
     click_on "Submit"
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Zone2")
+    expect(page).to have_content("Zoone")
     expect(page).to_not have_content("Zone")
   end
 
