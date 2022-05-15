@@ -9,5 +9,6 @@ RSpec.describe Disc, type: :model do
     it {should validate_presence_of :name}
     it {should validate_presence_of :plastic}
     it {should validate_numericality_of :speed}
+    it {should validate_numericality_of :quantity}
   end
 end

@@ -4,17 +4,17 @@ RSpec.describe 'root page' do
 
   it 'displays the attributes of all discs' do
     warehouse = Warehouse.create!(name: 'Discs R Us')
-    zone = Disc.create!(name: 'Zone', plastic: 'Glow', speed: 4)
-    leopard = Disc.create!(name: 'Leopard', plastic: 'DX', speed: 6)
-    rhyno = Disc.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2)
-
+    zone = Disc.create!(name: 'Zone', plastic: 'Glow', speed: 4, quantity: 7856)
+    leopard = Disc.create!(name: 'Leopard', plastic: 'DX', speed: 6, quantity: 1256)
+    rhyno = Disc.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2, quantity: 254)
     discs = Disc.all
-    #binding.pry
     visit root_path
 
     discs.each do |disc|
       expect(page).to have_content(disc.name)
       expect(page).to have_content(disc.plastic)
+      expect(page).to have_content(disc.speed)
+      expect(page).to have_content(disc.quantity)
     end
 
     expect(page).to_not have_content(warehouse.name)

@@ -4,4 +4,5 @@ class Disc < ApplicationRecord
   validates :name, presence: true
   validates :plastic, presence: true
   validates :speed, numericality: true
+  validates :quantity, numericality: true
 end
