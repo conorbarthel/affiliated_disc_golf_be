@@ -23,6 +23,6 @@ class DiscsController < ApplicationController
 
   private
     def disc_params
-      params.permit(:name, :plastic, :speed)
+      params.permit(:name, :plastic, :speed, :quantity)
     end
 end
