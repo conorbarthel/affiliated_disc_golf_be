@@ -70,4 +70,13 @@ RSpec.describe 'root page' do
     expect(current_path).to eq("/")
     expect(page).to_not have_content(leopard.name)
   end
+
+  it "has a button to create a new warehouse" do
+    visit root_path
+
+    expect(page).to have_content("Create Warehouse")
+    click_on "Create Warehouse"
+
+    expect(current_path).to eq(new_warehouse_path)
+  end
 end
