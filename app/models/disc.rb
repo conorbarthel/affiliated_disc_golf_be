@@ -1,0 +1,7 @@
+class Disc < ApplicationRecord
+  has_many :disc_warehouses
+  has_many :warehouses, through: :disc_warehouses
+  validates :name, presence: true
+  validates :plastic, presence: true
+  validates :speed, numericality: true
+end
