@@ -45,6 +45,13 @@ RSpec.describe 'root page' do
     click_on "Update #{zone.name}"
 
     expect(current_path).to eq("/discs/#{zone.id}/edit")
+    fill_in("Name", with:"Zone2")
+    fill_in("Plastic", with:"ESP")
+    fill_in("Speed", with:5)
+    click_on "Submit"
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("Zone2")
+    expect(page).to_not have_content("Zone")
   end
 
   it "has a link to delete each disc" do
@@ -52,7 +59,7 @@ RSpec.describe 'root page' do
     leopard = Disc.create!(name: 'Leopard', plastic: 'DX', speed: 6)
     rhyno = Disc.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2)
     visit root_path
-    
+
     expect(page).to have_selector(:link_or_button, "Delete #{rhyno.name}")
     expect(page).to have_content(leopard.name)
 
