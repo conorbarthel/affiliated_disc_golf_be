@@ -1,0 +1,19 @@
+<h1><%= @warehouse.name %></h1>
+
+<div class="current_stock">
+  <% @current_discs.each do |disc| %>
+    <%= disc.name %><br>
+    <%= disc.quantity %><br>
+  <% end %>
+</div>
+
+<div class="add_inventory">
+    <% @all_discs.each do |disc| %>
+    <%= button_to "Add #{disc.name} to Inventory",
+    disc_warehouses_path(@warehouse),
+    params:{
+            disc_id: disc.id,
+            warehouse_id: @warehouse.id
+    }%>
+  <% end %>
+</div>

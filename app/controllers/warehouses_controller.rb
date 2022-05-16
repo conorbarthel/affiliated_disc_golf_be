@@ -1,7 +1,8 @@
 class WarehousesController < ApplicationController
   def show
     @warehouse = Warehouse.find(params[:id])
-    @discs = @warehouse.discs
+    @current_discs = @warehouse.discs
+    @all_discs = Disc.all
   end
 
   def new;end

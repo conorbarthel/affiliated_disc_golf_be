@@ -20,6 +20,8 @@ RSpec.describe 'warehouse show page' do
     inventory_1 = DiscWarehouse.create!(disc_id: zone.id, warehouse_id: warehouse.id)
     inventory_2 = DiscWarehouse.create!(disc_id: leopard.id, warehouse_id: warehouse.id)
 
+    visit warehouse_path(warehouse)
+
     within "div.current_stock" do
       expect(page).to have_content(zone.name)
       expect(page).to have_content(leopard.name)
@@ -35,12 +37,14 @@ RSpec.describe 'warehouse show page' do
     inventory_1 = DiscWarehouse.create!(disc_id: zone.id, warehouse_id: warehouse.id)
     inventory_2 = DiscWarehouse.create!(disc_id: leopard.id, warehouse_id: warehouse.id)
 
+    visit warehouse_path(warehouse)
+
     within "div.current_stock" do
       expect(page).to_not have_content("Rhyno")
     end
 
     within "div.add_inventory" do
-      click_on "Add Rhyno"
+      click_on "Add Rhyno to Inventory"
     end
 
     within "div.current_stock" do
