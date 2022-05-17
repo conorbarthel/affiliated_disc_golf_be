@@ -12,12 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_05_15_204957) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "disc_warehouses", force: :cascade do |t|
-    t.bigint "disc_id"
-    t.bigint "warehouse_id"
+    t.integer "disc_id"
+    t.integer "warehouse_id"
     t.index ["disc_id"], name: "index_disc_warehouses_on_disc_id"
     t.index ["warehouse_id"], name: "index_disc_warehouses_on_warehouse_id"
   end
@@ -37,6 +34,4 @@ ActiveRecord::Schema.define(version: 2022_05_15_204957) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "disc_warehouses", "discs"
-  add_foreign_key "disc_warehouses", "warehouses"
 end
