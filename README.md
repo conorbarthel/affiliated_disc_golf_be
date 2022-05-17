@@ -2,7 +2,7 @@
 
 ## Description 
 
-Back End application for a disc golf logistics company, that supplies different discs and can assign them to warehouse locations. 
+Back End application for a disc golf logistics company, that supplies different discs and can assign them to warehouse locations. CRUD functionality is implemented to create, update, and destroy discs and create warehouses. Follows restful routing and utilizes Model View Controller to render views. 
 
 ## Created with 
 
