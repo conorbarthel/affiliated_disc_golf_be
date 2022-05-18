@@ -1,5 +1,6 @@
-
-<h1>Discs</h1>
+<h1>Affiliated Disc Golf</h1>
+<%= link_to "Create Disc", new_disc_path%>
+<%= link_to "Create Warehouse", new_warehouse_path%>
 <% @discs.each do |disc| %>
   <h3>Name: <%= disc.name %></h3> <br>
   <p>Plastic: <%= disc.plastic %></p> <br>
@@ -8,5 +9,4 @@
   <%= link_to "Update #{disc.name}", edit_disc_path(disc) %><br>
   <%= link_to "Delete #{disc.name}", disc_path(disc), method: :delete %> <br>
 <% end %>
-<%= link_to "Create Disc", new_disc_path%>
-<%= link_to "Create Warehouse", new_warehouse_path%>
+
